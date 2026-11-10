@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happiest Birthday, Dost 🎂</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#070a46;--ink:#f3efff;--glass:rgba(255,255,255,.07);--bn:Quicksand,system-ui,sans-serif}
+/* 1rem = 16px on a 360px wide phone. Size follows the smaller of screen width and height, so the layout fits phones, tablets and PCs */
+html{font-size:clamp(12px,min(4.444vw,2.38vh),26px)}
+@supports (height:100dvh){html{font-size:clamp(12px,min(4.444vw,2.38dvh),26px)}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;margin:0;background:#000;color:var(--ink);font-family:Quicksand,var(--bn);overflow:hidden}
+body{
+  background:
+    radial-gradient(120% 80% at 50% 0,#0f1470,var(--navy) 65%);
+  transition:filter 1.5s}
+body.dark{filter:brightness(.45) saturate(.8)}
+h1,h2{font-family:'Dancing Script',cursive;font-weight:600;margin:.1em 0 .15em}
+h1{font-size:2rem;line-height:1.2}h2{font-size:1.5rem;line-height:1.25}
+p{line-height:1.6;margin:.3em 0;font-size:.75rem;font-family:Quicksand,var(--bn)}
+
+/* hanging moons & stars */
+.hang{position:fixed;top:0;width:0;pointer-events:none;opacity:0;transition:opacity 1.4s;z-index:1;transform-origin:50% 0;animation:sw 4.5s ease-in-out infinite alternate}
+.decor .hang,.decor .bl{opacity:1}
+.hang i{position:absolute;left:0;top:0;width:1px;background:#e2b45f99}
+.hang svg{position:absolute;filter:drop-shadow(0 3px 5px #0006)}
+@keyframes sw{from{transform:rotate(-2.2deg)}to{transform:rotate(2.2deg)}}
+
+/* bottom balloons */
+.bl{position:fixed;bottom:0;left:0;right:0;height:3.5rem;overflow:hidden;display:flex;justify-content:center;align-items:flex-end;opacity:0;transition:opacity 1.4s,transform 1.4s;transform:translateY(50px);pointer-events:none;z-index:1}
+.decor .bl{transform:none}
+.bl b{flex:0 0 auto;width:2.9rem;height:3.4rem;margin:0 -.15rem -1rem;border-radius:50% 50% 47% 47%;position:relative;animation:bb 3.2s ease-in-out infinite;box-shadow:inset -8px -9px 16px #0005}
+.bl b:nth-child(even){height:3.1rem;margin-bottom:-.75rem}
+.bl b:after{content:"";position:absolute;left:22%;top:14%;width:26%;height:20%;border-radius:50%;background:radial-gradient(#fffc,#fff0 70%);transform:rotate(-35deg)}
+.bl b.g{background:radial-gradient(circle at 36% 30%,#f4d58e,#c99636 55%,#8a6216)}
+.bl b.k{background:radial-gradient(circle at 36% 30%,#555c78,#1b1e36 55%,#080918)}
+@keyframes bb{50%{transform:translateY(-9px)}}
+
+/* screens (scroll-safe centering) */
+.scr{position:fixed;inset:0;display:none;flex-direction:column;align-items:center;padding:calc(3.6rem + env(safe-area-inset-top,0px)) 1rem calc(3.6rem + env(safe-area-inset-bottom,0px));text-align:center;z-index:2;opacity:0;overflow-y:auto}
+.scr>:first-child{margin-top:auto}.scr>:last-child{margin-bottom:auto}
+.scr.on{display:flex;animation:in .8s forwards}
+@keyframes in{to{opacity:1}}
+.card{width:min(20.45rem,91vw);padding:1.25rem 1.1rem;border-radius:1.5rem;background:var(--glass);border:1px solid #ffffff1f;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 20px 50px #0007;flex:0 0 auto}
+.card.wide{width:min(20.45rem,91vw);padding:1.25rem 1.1rem}
+
+.btn{font:600 .8rem Quicksand,var(--bn);border:0;border-radius:.8rem;padding:.7rem 1.2rem;color:#fff;cursor:pointer;background:linear-gradient(90deg,#ff7ab8,#f23c9b);box-shadow:0 8px 24px #ff5fa855;margin-top:1rem;width:100%;flex:0 0 auto}
+.btn.gold{background:linear-gradient(90deg,#ffd84a,#f0a81c);color:#3b2a00;box-shadow:0 8px 24px #f0a81c55;width:auto;padding:.7rem 1.4rem;margin-top:1.25rem}
+.btn.ghost{background:#ffffff14;box-shadow:none;border:1px solid #ffffff2e}
+.btn[disabled]{opacity:.35;pointer-events:none}
+#s0 h1{margin:0 0 1.6rem}
+#s0 .btn{margin-top:1.8rem}
+
+.reel{display:flex;gap:.7rem;justify-content:center;margin:1.1rem 0}
+.dg{width:3.3rem;height:4.55rem;border-radius:.9rem;overflow:hidden;background:linear-gradient(#0a0d33,#1b2063,#0a0d33);border:1px solid #ffffff2a}
+.dg div{transition:transform 2.2s cubic-bezier(.2,.8,.2,1);font:600 1.9rem/4.55rem Quicksand;color:#ffd84a}
+
+/* story cards */
+.chip{font-size:.65rem;letter-spacing:.02em;color:#f4d58e;font-family:var(--bn);font-weight:500;margin:.25em 0 0}
+.stack{position:relative;width:9.1rem;height:10.2rem;margin:1rem auto .55rem;isolation:isolate;flex:0 0 auto}
+.stack:before,.stack:after{content:"";position:absolute;border-radius:1rem;z-index:-1}
+.stack:before{left:3%;right:3%;top:.5rem;bottom:-.55rem;background:#eadfca}
+.stack:after{left:7%;right:7%;top:.85rem;bottom:-1rem;background:#d8cbb6;z-index:-2}
+.tc{position:relative;width:100%;height:100%;perspective:900px;cursor:pointer;animation:tin .55s cubic-bezier(.2,1.2,.4,1);transform:rotate(var(--r,-1.5deg))}
+.fi{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.3,1.1,.4,1)}
+.tc.f .fi{transform:rotateY(180deg)}
+.ff,.fb{position:absolute;inset:0;border-radius:1rem;background:#fff7ec;color:#5b3a55;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.7rem;padding:.9rem;box-shadow:0 14px 30px #0006}
+.fb{transform:rotateY(180deg)}
+.num{font:600 2.5rem/1 'Dancing Script',cursive;color:#d9609f}
+.tap{font:500 .62rem Quicksand,sans-serif;color:#c98aa8;background:#fff;border-radius:1rem;padding:.35rem .8rem;box-shadow:0 3px 10px #0001}
+.fb p{margin:0;font:500 .68rem/1.5 var(--bn)}
+.hr{width:1.5rem;height:1.5rem;animation:hb 1.4s ease-in-out infinite}
+@keyframes hb{50%{transform:scale(1.14)}}
+@keyframes tin{from{opacity:0;transform:translateX(60px) rotate(6deg)}}
+
+/* pop balloons */
+.sky{position:relative;width:18.75rem;height:18.75rem;flex:0 0 auto}
+.bal{position:absolute;width:3.5rem;height:4.4rem;border-radius:50% 50% 48% 48%;cursor:pointer;animation:fl 3.4s ease-in-out infinite;box-shadow:inset -8px -8px 16px #0003}
+.bal:after{content:"";position:absolute;left:50%;top:100%;width:1px;height:4rem;background:#fff7}
+@keyframes fl{50%{transform:translateY(-14px)}}
+.word{position:absolute;font:600 1.1rem 'Dancing Script',cursive;animation:up 2.6s forwards;white-space:nowrap}
+@keyframes up{to{transform:translateY(-70px);opacity:0}}
+
+/* cake */
+.ck{width:13.4rem;height:auto;margin-top:1.15rem;overflow:visible;animation:pop .9s cubic-bezier(.2,1.4,.4,1);flex:0 0 auto}
+@keyframes pop{from{transform:scale(.8) translateY(20px);opacity:0}}
+.fm{transform-box:fill-box;transform-origin:50% 100%;animation:fk .32s ease-in-out infinite alternate;filter:drop-shadow(0 0 7px #ffa629)}
+@keyframes fk{to{transform:scale(1.07,.92) rotate(2.5deg)}}
+.hit{fill:transparent;cursor:pointer}
+.sm{fill:none;stroke:#cfd6ff;stroke-width:2.2;stroke-linecap:round;opacity:0}
+.cn.o .fm{animation:none;transform:scale(.05);opacity:0;transition:transform .3s,opacity .25s}
+.cn.o .sm{animation:sm 1.8s ease-out}
+.cn.o .hit{pointer-events:none}
+@keyframes sm{0%{opacity:.8;transform:translateY(0)}100%{opacity:0;transform:translateY(-38px)}}
+
+/* gift */
+.gift{width:10.6rem;height:10.6rem;cursor:pointer;animation:fl 2s ease-in-out infinite;transition:transform .6s;margin-top:1.9rem;flex:0 0 auto}
+.gift svg{width:100%;height:100%;filter:drop-shadow(0 12px 18px #0007)}
+.gift.go{transform:scale(1.6) rotate(10deg);opacity:0;transition:.9s}
+
+canvas{position:fixed;inset:0;pointer-events:none;z-index:5}
+.letter{position:relative;text-align:left;font:500 .68rem/1.5 var(--bn);margin-top:.5rem;flex:1 1 auto;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.letter .h{visibility:hidden}
+.letter::-webkit-scrollbar{display:none}
+#s6{padding:calc(3.6rem + env(safe-area-inset-top,0px)) 1rem calc(3.6rem + env(safe-area-inset-bottom,0px))}
+#s6 .card{flex:0 0 auto;max-height:100%;width:min(20.45rem,91vw);display:flex;flex-direction:column;padding:1rem 1rem 1.05rem}
+#s6 .card .btn{flex:0 0 auto;margin-top:.8rem;width:auto;align-self:center;padding:.7rem 1.45rem}
+#s6 h2{flex:0 0 auto;margin:.2rem 0 .3rem;font-size:1.4rem}
+.letter p{margin:0 0 .4em;font-size:inherit;line-height:inherit;font-family:var(--bn)}
+
+
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important;transition-duration:.01s!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+<linearGradient id="gd" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6d58a"/><stop offset="1" stop-color="#c8923a"/></linearGradient>
+</defs></svg>
+<div id="hang"></div><div class="bl" id="bl"></div>
+<canvas id="cv"></canvas>
+
+<!-- 0 hello -->
+<section class="scr on" id="s0"><div class="card"><h1>Hi, dost</h1>
+<p id="hp">Today is your special day. How could I let it pass with just an ordinary wish? 🩵</p>
+<button class="btn" id="dec">✨ Decorate</button></div></section>
+
+<!-- 1 five years -->
+<section class="scr" id="s1"><div class="card"><h2>Our Friendship</h2><p>Let's see how many years we've known each other...</p>
+<div class="reel" id="rl"></div>
+<p id="yrs" style="font-weight:600;font-size:.85rem;font-family:var(--bn)"></p><button class="btn gold" id="rev">✨ Let's see</button></div></section>
+
+<!-- 2 story -->
+<section class="scr" id="s2"><div class="card" style="padding:1rem"><h2>Our Story</h2><p class="chip" id="chp"></p></div>
+<div class="stack" id="stk"></div><p style="font-size:.62rem;margin-top:.5rem" id="ct"></p><button class="btn" id="nx" style="width:8.2rem;margin-top:1.2rem">Next →</button></section>
+
+<!-- 3 balloons -->
+<section class="scr" id="s3"><div class="card" style="padding:.9rem"><h2>Pop the Balloons</h2><p style="font-size:.7rem;font-family:var(--bn)">Tap see what I think of you 🩵</p></div>
+<div class="sky" id="sky"></div><button class="btn" id="bn" style="width:8.2rem;display:none">Continue →</button></section>
+
+<!-- 4 wish -->
+<section class="scr" id="s4"><h2>Make a Wish!</h2><p style="font-family:var(--bn);font-size:.75rem">Tap the candle flames to blow them out.</p>
+<svg class="ck" viewBox="0 0 380 262" aria-label="Birthday cake with five candles">
+<defs>
+<pattern id="st" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#fff"/><rect width="5" height="10" fill="#e7a7dc"/></pattern>
+<linearGradient id="fg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff8a1a"/><stop offset=".55" stop-color="#ffc42e"/><stop offset="1" stop-color="#fff0a0"/></linearGradient>
+<linearGradient id="plt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a4283"/><stop offset="1" stop-color="#222a63"/></linearGradient>
+<linearGradient id="bd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fdf3fa"/><stop offset="1" stop-color="#f3e4f3"/></linearGradient>
+</defs>
+<ellipse cx="190" cy="238" rx="172" ry="20" fill="url(#plt)" opacity=".95"/>
+<rect x="40" y="120" width="300" height="116" rx="18" fill="url(#bd)"/>
+<rect x="40" y="186" width="300" height="6" fill="#f6a8d2"/>
+<g id="cd"></g>
+<g fill="#f7aedb"><rect x="40" y="108" width="300" height="38" rx="18"/>
+<path d="M62 140v16a9 9 0 0 0 18 0v-16z"/><path d="M122 140v10a9 9 0 0 0 18 0v-10z"/><path d="M188 140v20a9 9 0 0 0 18 0v-20z"/><path d="M252 140v10a9 9 0 0 0 18 0v-10z"/><path d="M300 140v16a9 9 0 0 0 18 0v-16z"/></g>
+<rect x="58" y="112" width="264" height="5" rx="2.5" fill="#fff" opacity=".25"/>
+</svg></section>
+
+<!-- 5 yay -->
+<section class="scr" id="s5"><h1>Yay! Happiest Birthday, dost</h1><button class="btn gold" id="ol">A letter for you ✉</button></section>
+
+<!-- 6 letter -->
+<section class="scr" id="s6"><div class="card wide"><h2>Dear Dost,</h2><div class="letter" id="lt"></div><button class="btn" id="lb" style="opacity:.35;pointer-events:none">One last thing →</button></div></section>
+
+<!-- 7 gift -->
+<section class="scr" id="s7"><h2 style="font-size:1.25rem">One last thing…</h2><p style="font-family:var(--bn)">Tap the gift</p>
+<div class="gift" id="gf"><svg viewBox="0 0 150 150">
+<defs><linearGradient id="pk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f0509c"/><stop offset="1" stop-color="#d11f7a"/></linearGradient></defs>
+<path d="M75 40C60 10 30 14 40 36M75 40C90 10 120 14 110 36" fill="none" stroke="#e8b81a" stroke-width="6" stroke-linecap="round"/>
+<rect x="18" y="40" width="114" height="28" rx="4" fill="#f45aa6"/>
+<rect x="26" y="66" width="98" height="78" rx="6" fill="url(#pk)"/>
+<rect x="62" y="40" width="26" height="104" fill="#e8b81a"/>
+</svg></div></section>
+
+<!-- 8 end -->
+<section class="scr" id="s8"><div class="card"><h2>Thank you for every memory<br>of these 6 years.</h2>
+<p style="font-family:var(--bn)">Wherever you are, however you are, always stay well.<br>Happiest Birthday once again, dost 🩵</p>
+<button class="btn ghost" id="again">↻ Watch again</button></div></section>
+
+<script>
+/* ===== EDIT THESE ===== */
+const YEARS=6;
+const CHAPTERS=[
+ {n:"Chapter 1 · Where it began",c:[
+  "6 years. Just a number on the calendar, but a huge chapter of my life.",
+  "You weren't just a friend to me. You were my best friend, a truly good person in my life."]},
+ {n:"Chapter 2 · Our 6 years",c:[
+  "Every moment, every second of these 6 years was precious to me.",
+  "Before making any decision in life, I'd think, “Let me tell her first.”",
+  "Whether it was good news or bad, you were the first to know.",
+  "There was nothing I didn't share with you.",
+  "Through all that time, you were the place I trusted most."]},
+ {n:"Chapter 3 · What I lost",c:[
+  "Then, for some reasons, our friendship didn't stay the way it was.",
+  "And I'm the one responsible. It happened because of my mistake.",
+  "I understand my mistake, and I'm not ashamed to admit it."]},
+ {n:"Chapter 4 · What will remain",c:[
+  "Still, my respect for you will last a lifetime.",
+  "And the memories of those 6 years will always remain priceless to me."]}
+];
+const WORDS=[["Best Friend","#ff5a5f"],["Trustworthy","#3d8bff"],["Dear","#ffd23f"],["Remarkable","#3ddc97"],["Priceless","#c77dff"]];
+const LETTER=[
+ "Today is your birthday. I felt like saying a few things, so I wrote this from the heart.",
+ "In these 6 years, you were a truly good friend in my life. Every decision, every event in my life, I shared it all with you. There was nothing I didn't tell you.",
+ "Every moment, every second of our friendship was precious to me, and still is.",
+ "Today our friendship isn't what it used to be. I know the reason is my mistake, and I'm truly sorry for it.",
+ "I'm not asking anything from you. I just want you to know that my respect for you will last a lifetime.",
+ "Always stay well, and always stay happy.",
+ "Happiest Birthday, dost. 🩵"
+];
+/* ----- VIEW TRACKING (Supabase). Leave SB_URL / SB_KEY empty to switch tracking off ----- */
+const SB_URL='https://ymmkrotbbwjvfnenakuz.supabase.co';          // e.g. https://abcdxyz.supabase.co
+const SB_KEY='sb_publishable_PheFY6dt4Nk3VmE5FCsqPA_Uk1jPs4I';          // anon / publishable key (safe to keep here, it can only INSERT)
+const VIEWER='friend';    // label for this copy of the file (e.g. 'friend', 'test')
+/* ====================== */
+const $=id=>document.getElementById(id);
+
+/* ---------- tracking (never allowed to break the page) ---------- */
+const NAMES=['welcome','years','story','balloons','wish_cake','yay','letter','gift','end'];
+let cur=0,curT=Date.now();const T0=Date.now();
+function rid(){try{return crypto.randomUUID()}catch(e){return Math.random().toString(36).slice(2)+Date.now().toString(36)}}
+let VID;try{VID=localStorage.getItem('wv');if(!VID){VID=rid();localStorage.setItem('wv',VID)}}catch(e){VID=rid()}
+const SID=rid();let Q=[],busy=false,TZ='';try{TZ=Intl.DateTimeFormat().resolvedOptions().timeZone}catch(e){}
+function parseUA(){const u=navigator.userAgent;let m;const d={};
+  d.os=(m=u.match(/Android ([\d.]+)/))?'Android '+m[1]:(m=u.match(/OS ([\d_]+) like Mac/))?'iOS '+m[1].replace(/_/g,'.'):(m=u.match(/Windows NT ([\d.]+)/))?'Windows '+m[1]:(m=u.match(/Mac OS X ([\d_]+)/))?'macOS '+m[1].replace(/_/g,'.'):/CrOS/.test(u)?'ChromeOS':/Linux/.test(u)?'Linux':'unknown';
+  d.browser=/Telegram/i.test(u)?'Telegram':/FBAN|FBAV/.test(u)?'Facebook':/Instagram/.test(u)?'Instagram':/EdgA?\//.test(u)?'Edge':/OPR\/|Opera/.test(u)?'Opera':/SamsungBrowser/.test(u)?'Samsung Browser':/Firefox|FxiOS/.test(u)?'Firefox':/Chrome|CriOS/.test(u)?'Chrome':/Safari/.test(u)?'Safari':'unknown';
+  if(m=u.match(/(?:Chrome|CriOS|Firefox|FxiOS|EdgA?|Version)\/(\d+)/))d.browser+=' '+m[1];
+  d.model=(m=u.match(/Android[^;]*; ([^;)]+?)(?: Build|[;)])/))&&m[1]!=='K'?m[1]:'';
+  d.device_type=/iPad|Tablet/.test(u)||(/Android/.test(u)&&!/Mobile/.test(u))?'tablet':/Mobi|iPhone|Android/.test(u)?'mobile':'desktop';
+  return d}
+const DEV=parseUA();
+const devReady=new Promise(res=>{try{
+  setTimeout(res,800);
+  if(!navigator.userAgentData||!navigator.userAgentData.getHighEntropyValues)return res();
+  navigator.userAgentData.getHighEntropyValues(['model','platformVersion']).then(v=>{
+    if(v.model)DEV.model=v.model;
+    const pv=parseInt(v.platformVersion);
+    if(v.platform==='Android'&&pv)DEV.os='Android '+pv;
+    res()}).catch(res)}catch(e){res()}});
+function lt(){const d=new Date(),p=n=>String(n).padStart(2,'0'),o=-d.getTimezoneOffset(),a=Math.abs(o);
+  return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate())+' '+p(d.getHours())+':'+p(d.getMinutes())+':'+p(d.getSeconds())+' '+(o<0?'-':'+')+p(Math.floor(a/60))+':'+p(a%60)}
+function track(event,detail,screen){try{
+  if(!SB_URL||!SB_KEY)return;
+  Q.push({viewer:VIEWER,visitor_id:VID,session_id:SID,event,screen:screen==null?cur:screen,detail:detail||null,ua:navigator.userAgent,tz:TZ,lang:navigator.language,vw:innerWidth,vh:innerHeight,device_type:DEV.device_type,os:DEV.os,browser:DEV.browser,model:DEV.model,local_time:lt(),sw:window.screen.width,sh:window.screen.height,dpr:window.devicePixelRatio||1});
+  flush()}catch(e){}}
+function flush(){try{
+  if(busy||!Q.length)return;busy=true;const batch=Q.splice(0,Q.length);
+  fetch(SB_URL.replace(/\/$/,'')+'/rest/v1/wish_events',{method:'POST',keepalive:true,headers:Object.assign({'Content-Type':'application/json',apikey:SB_KEY,Prefer:'return=minimal'},SB_KEY.indexOf('sb_')===0?{}:{Authorization:'Bearer '+SB_KEY}),body:JSON.stringify(batch)})
+   .then(r=>{if(!r.ok)throw 0;busy=false;flush()})
+   .catch(()=>{Q=batch.concat(Q).slice(-200);busy=false})}catch(e){busy=false}}
+addEventListener('online',flush);
+document.addEventListener('visibilitychange',()=>track(document.hidden?'hidden':'visible',{ms_on_screen:Date.now()-curT}));
+addEventListener('pagehide',()=>track('leave',{total_ms:Date.now()-T0,ms_on_screen:Date.now()-curT}));
+devReady.then(()=>{track('open',{referrer:document.referrer,proto:location.protocol},0);track('screen',{name:NAMES[0]},0)});
+function go(n){const now=Date.now();track('screen_time',{ms:now-curT,name:NAMES[cur]},cur);cur=n;curT=now;track('screen',{name:NAMES[n]},n);document.querySelectorAll('.scr').forEach(s=>s.classList.remove('on'));setTimeout(()=>{$('s'+n).classList.add('on');$('s'+n).scrollTop=0},350)}
+
+
+/* ---------- sounds (generated in-browser, no files) ---------- */
+let AC;function ac(){if(!AC){const C=window.AudioContext||window.webkitAudioContext;if(C)AC=new C()}if(AC&&AC.state==='suspended')AC.resume();return AC}
+function env(a,t,pk,dur,at){const g=a.createGain();g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(pk,t+(at||.004));g.gain.exponentialRampToValueAtTime(.0001,t+dur);g.connect(a.destination);return g}
+function osc(a,ty,f0,f1,t,dur,pk){const o=a.createOscillator(),g=env(a,t,pk,dur);o.type=ty;o.frequency.setValueAtTime(f0,t);if(f1!==f0)o.frequency.exponentialRampToValueAtTime(f1,t+dur);o.connect(g);o.start(t);o.stop(t+dur+.03)}
+function noi(a,t,dur,ty,f0,f1,q,pk,at){const n=Math.floor(a.sampleRate*dur),b=a.createBuffer(1,n,a.sampleRate),d=b.getChannelData(0);for(let i=0;i<n;i++)d[i]=Math.random()*2-1;const s=a.createBufferSource();s.buffer=b;const f=a.createBiquadFilter();f.type=ty;f.frequency.setValueAtTime(f0,t);f.frequency.exponentialRampToValueAtTime(f1,t+dur);f.Q.value=q;const g=env(a,t,pk,dur,at);s.connect(f);f.connect(g);s.start(t)}
+/* buttons: water raindrop */
+function tap(){const a=ac();if(!a)return;const t=a.currentTime;osc(a,'sine',650,1900,t,.13,.28);osc(a,'sine',1300,3000,t+.012,.09,.08)}
+/* balloon: pop */
+function pop(){const a=ac();if(!a)return;const t=a.currentTime;noi(a,t,.07,'lowpass',7000,600,.6,.9,.002);osc(a,'sine',240,50,t,.1,.5)}
+/* card: paper flip */
+function flip(){const a=ac();if(!a)return;const t=a.currentTime;noi(a,t,.18,'bandpass',900,3400,.9,.3,.03)}
+/* candle: puff of breath */
+function blow(){const a=ac();if(!a)return;const t=a.currentTime;noi(a,t,.45,'bandpass',1800,700,.8,.5,.04)}
+/* decorate / reveal: twinkle */
+function sparkle(){const a=ac();if(!a)return;const t=a.currentTime;[1319,1568,1976,2637].forEach((f,i)=>osc(a,'sine',f,f,t+i*.09,.4,.11))}
+/* reel: ticking that slows... then settles */
+function reel(){const a=ac();if(!a)return;const t=a.currentTime;let x=0,g=.05;while(x<2.2){noi(a,t+x,.02,'highpass',3500,2500,.7,.12,.001);x+=g;g*=1.1}}
+/* letter typing: very soft key tick */
+function tick(){const a=ac();if(!a)return;const t=a.currentTime;noi(a,t,.025,'highpass',2200,1600,.7,.16,.001);osc(a,'sine',1600,900,t,.025,.05)}
+/* confetti / gift: celebration */
+function party(){const a=ac();if(!a)return;const t=a.currentTime;pop();[523,659,784,1047].forEach((f,i)=>osc(a,'triangle',f,f,t+.05+i*.08,.45,.13));for(let i=0;i<5;i++)noi(a,t+.1+Math.random()*.5,.05,'lowpass',6000,800,.6,.25,.002)}
+document.addEventListener('pointerdown',e=>{const t=e.target.closest&&e.target.closest('button,.bal');if(!t||t.disabled)return;t.classList.contains('bal')?pop():tap()});
+
+/* hanging moons & stars + bottom balloons */
+const R=n=>(n/16)+'rem';
+const moon=s=>`<svg style="width:${R(s)};height:${R(s)}" viewBox="0 0 60 60"><defs><mask id="mm"><rect width="60" height="60" fill="#fff"/><circle cx="43" cy="19" r="23" fill="#000"/></mask></defs><circle cx="28" cy="32" r="27" fill="url(#gd)" mask="url(#mm)"/></svg>`;
+const star=s=>`<svg style="width:${R(s)};height:${R(s)}" viewBox="0 0 100 100"><polygon points="50,6 61,38 95,38 68,58 79,92 50,72 21,92 32,58 5,38 39,38" fill="url(#gd)" stroke="url(#gd)" stroke-width="7" stroke-linejoin="round"/></svg>`;
+const HANG=[[8.3,'m',50,36,0],[29,'s',25,30,.6],[49,'s',21,21,1.2],[69,'s',29,40,.3],[88,'m',25,26,.9]];
+let decoKey='';
+function deco(){
+  const rem=parseFloat(getComputedStyle(document.documentElement).fontSize)||16,SW=Math.min(innerWidth,22.5*rem),key=innerWidth+'|'+rem;
+  if(key===decoKey)return;decoKey=key;
+  const K=Math.max(0,Math.ceil((innerWidth/2+SW/2)/SW)-1);let h='';
+  for(let k=-K;k<=K;k++)HANG.forEach(([x,t,sz,l,d])=>{
+    h+=`<div class="hang" style="left:calc(50% + ${((x-50)/100+k).toFixed(4)} * min(100vw, 22.5rem));animation-delay:-${(d+(k+K)*.37).toFixed(2)}s"><i style="height:${R(l)}"></i><div style="position:absolute;top:${R(l-4)};left:-${R(sz/2)}">${t=='m'?moon(sz):star(sz)}</div></div>`});
+  $('hang').innerHTML=h;
+  const n=Math.ceil(innerWidth/(2.6*rem))+2;let bh='';
+  for(let i=0;i<n;i++)bh+=`<b class="${i%2?'k':'g'}" style="animation-delay:-${(i*.37%3).toFixed(2)}s"></b>`;
+  $('bl').innerHTML=bh}
+deco();let rz;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(deco,150)});
+
+/* 0 decorate */
+$('dec').onclick=function(){
+  if(this.dataset.d){go(1);return}
+  document.body.classList.remove('dark');document.body.classList.add('decor');
+  this.disabled=true;sparkle();track('decorate');setTimeout(()=>{$('hp').textContent="Just a little effort to make your day special.";this.textContent="Let's begin 🩵";this.disabled=false;this.dataset.d=1},1800)};
+
+/* 1 years reel */
+const ds=String(YEARS).split('');
+$('rl').innerHTML=ds.map((_,i)=>`<div class="dg"><div id="d${i}"></div></div>`).join('');
+ds.forEach((_,i)=>{$('d'+i).innerHTML=[...Array(30)].map((_,k)=>`<div style="font:600 1.9rem/4.55rem Quicksand">${k%10}</div>`).join('')});
+$('rev').onclick=function(){
+  if(this.dataset.d){go(2);return}
+  this.disabled=true;reel();track('years_reveal');
+  ds.forEach((d,i)=>{$('d'+i).style.transform=`translateY(-${(20+ +d)*4.55}rem)`});
+  $('yrs').textContent="Let's see… ✨";
+  setTimeout(()=>{sparkle();$('yrs').textContent=YEARS+" years of friendship. Every moment was precious 🩵";this.className="btn ghost";this.textContent="Continue →";this.disabled=false;this.dataset.d=1},2400)};
+
+/* 2 story cards (chapters) */
+const HEART='<svg class="hr" viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.6 4.5c2 0 3.5 1.1 5.4 3.2 1.9-2.1 3.4-3.2 5.4-3.2 3.6 0 5.7 3.9 4.2 7.3C19.5 16.4 12 21 12 21z" fill="#7fd3f0"/></svg>';
+const CARDS=[];CHAPTERS.forEach(ch=>ch.c.forEach(t=>CARDS.push({n:ch.n,t})));
+let ti=0;function card(){
+  const c=CARDS[ti];
+  $('stk').innerHTML=`<div class="tc" id="tcd" style="--r:${ti%2?1.5:-1.5}deg"><div class="fi"><div class="ff"><div class="num">#${ti+1}</div><div class="tap">Tap to flip ✨</div></div><div class="fb">${HEART}<p>${c.t}</p></div></div></div>`;
+  $('tcd').onclick=()=>{track('card_flip',{card:ti+1});flip();$('tcd').classList.toggle('f');$('nx').disabled=false};
+  $('nx').disabled=true;
+  $('chp').textContent=c.n;
+  $('ct').textContent=(ti+1)+" / "+CARDS.length;
+  $('nx').textContent=ti==CARDS.length-1?"Continue →":"Next →"}
+card();$('nx').onclick=()=>{track('card_next',{card:ti+1});if(++ti>=CARDS.length)return go(3);card()};
+
+/* 3 pop balloons */
+const pos=[[10,80],[95,20],[190,90],[60,150],[170,170]];let popped=0;
+WORDS.forEach(([w,c],i)=>{const b=document.createElement('div');b.className='bal';b.style.cssText=`left:${pos[i][0]/16}rem;top:${pos[i][1]/16}rem;background:radial-gradient(circle at 35% 30%,#fff8,${c} 55%);animation-delay:${i*.4}s`;
+  b.onclick=()=>{track('balloon_pop',{word:w});const t=document.createElement('div');t.className='word';t.textContent=(i%2?'✨ ':'🩵 ')+w;t.style.cssText=`left:${(pos[i][0]-4)/16}rem;top:${(pos[i][1]+20)/16}rem`;$('sky').appendChild(t);b.remove();if(++popped==WORDS.length)setTimeout(()=>$('bn').style.display='block',900)};$('sky').appendChild(b)});
+$('bn').onclick=()=>go(4);
+
+/* 4 cake */
+let lit=5,cs='';for(let i=0;i<5;i++){const x=122+34*i;cs+=`<g class="cn"><path class="sm" d="M${x} 50q-6-8 0-14t0-14"/><rect x="${x-5}" y="56" width="10" height="60" rx="3" fill="url(#st)"/><rect x="${x-.7}" y="50" width="1.4" height="8" fill="#6b5b73"/><path class="fm" style="animation-delay:-${(i*.07).toFixed(2)}s" fill="url(#fg)" d="M${x} 20C${x+10} 32 ${x+9} 46 ${x} 51C${x-9} 46 ${x-10} 32 ${x} 20Z"/><ellipse class="hit" cx="${x}" cy="42" rx="17" ry="34"/></g>`}
+$('cd').innerHTML=cs;document.querySelectorAll('.cn').forEach(c=>c.onclick=()=>{if(c.classList.contains('o'))return;c.classList.add('o');blow();track('candle_out',{left:lit-1});if(!--lit){confetti();setTimeout(()=>go(5),2600)}});
+
+/* 5 yay → 6 letter → 7 gift → 8 end */
+$('ol').onclick=()=>{go(6);setTimeout(type,500)};
+function type(){const el=$('lt');el.innerHTML='';el.scrollTop=0;
+  const ps=LETTER.map(t=>{const p=document.createElement('p');p.innerHTML='<span></span><span class="h"></span>';p.lastChild.textContent=t;el.appendChild(p);return p});
+  let i=0;(function next(){if(i>=LETTER.length){track('letter_done');$('lb').style.cssText='';el.scrollTop=0;return}
+  const p=ps[i],t=LETTER[i++],a=p.firstChild,b=p.lastChild;let k=0;
+  (function ch(){k++;if(k%2==0)tick();a.textContent=t.slice(0,k);b.textContent=t.slice(k);
+    if(el.scrollHeight>el.clientHeight)el.scrollTop=Math.max(0,p.offsetTop+p.offsetHeight-el.clientHeight);
+    if(k<t.length)setTimeout(ch,22);else setTimeout(next,300)})()})()}
+$('lb').onclick=()=>go(7);
+$('gf').onclick=function(){track('gift_open');this.classList.add('go');confetti();setTimeout(()=>go(8),1200)};
+$('again').onclick=()=>{track('replay');setTimeout(()=>location.reload(),250)};
+
+/* confetti */
+const cv=$('cv'),x=cv.getContext('2d');function sz(){cv.width=innerWidth;cv.height=innerHeight}sz();addEventListener('resize',sz);
+function confetti(){party();const ps=[...Array(140)].map(()=>({x:innerWidth/2+(Math.random()-.5)*120,y:innerHeight*.5,vx:(Math.random()-.5)*12,vy:-Math.random()*14-3,c:`hsl(${Math.random()*360},90%,65%)`,s:4+Math.random()*5,r:Math.random()*6}));
+  let f=0;(function d(){x.clearRect(0,0,cv.width,cv.height);ps.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.35;p.vx*=.99;p.r+=.2;x.save();x.translate(p.x,p.y);x.rotate(p.r);x.fillStyle=p.c;x.fillRect(0,0,p.s,p.s*.6);x.restore()});if(++f<170)requestAnimationFrame(d);else x.clearRect(0,0,cv.width,cv.height)})()}
+</script>
+</body>
+</html>
